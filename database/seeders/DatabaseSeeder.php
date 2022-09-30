@@ -19,11 +19,12 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            UserSeeder::class,
-            CategorySeeder::class,
-            TaskSeeder::class
+            //UserSeeder::class
         ]);
 
+        User::factory(4)->create();
+        Category::factory(30)->create();
+        Task::factory(100)->create();
       
         // \App\Models\User::factory(10)->create();
 
