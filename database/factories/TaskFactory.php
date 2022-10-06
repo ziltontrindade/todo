@@ -19,12 +19,13 @@ class TaskFactory extends Factory
     {
 
         $user = User::all()->random();
-        
+
        while($user->categories = []){
             $user = User::all()->random();
             }
 
         return [
+            'is_done' => $this->faker->boolean(),
             'title' => $this->faker->text(30),
             'description' => $this->faker->text(60),
             'due_date' => $this->faker->dateTime(),
