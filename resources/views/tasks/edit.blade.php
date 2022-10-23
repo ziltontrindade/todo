@@ -9,9 +9,13 @@
         <form method="POST" action="{{route('task.edit_action')}}">
          @csrf
          <input type="hidden" name="id" value="{{$task->id}}" />
-             <x-form.text_input name='title' label="Titulo da Task" placeholder="Digite o titulo da Task" value="{{$task->title}}" />
 
-             <x-form.text_input type="datetime-local" name='due_date' label="Data de realização"  value="{{$task->due_date}}"/>
+        <x-form.checkbox_input
+        name='is_done'
+        label="Tarefa Realizada?"
+        checked="{{$task->is_done}}"/>
+
+        <x-form.text_input type="datetime-local" name='due_date' label="Data de realização"  value="{{$task->due_date}}"/>
 
              <x-form.select_input name='category_id' label="categoria"  placeholder="Selecione uma opção">
                  @foreach ($categories as $category)

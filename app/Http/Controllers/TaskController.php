@@ -53,6 +53,9 @@ class TaskController extends Controller
 
         $r_data = $r->only(['title','due_date','category_id','description']);
 
+        $r_data['is_done'] = $r->is_done ? true : false;
+
+
         $task = Task::find($r->id);
         if(!$task){
             return 'Erro de task não existente';
@@ -67,7 +70,14 @@ class TaskController extends Controller
 
 
     public function delete(Request $r){
-       //Deleta e redireciona para a Home
+       $id = $r->id;
+
+       $task = Task::find($id);
+
+       if($task){
+        $task->delete();
+       }
+
        return redirect('/');
     }
 }
